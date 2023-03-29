@@ -37,7 +37,6 @@ const showpassword = () =>{
 
 
       const handleChange = (e) => {
-        setProgess(0)
         const file = e.target.files[0]; // accessing file
         console.log(file);
         setFile(file); // storing file
