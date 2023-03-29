@@ -1,0 +1,11 @@
+// import React from "react";
+// import { useState } from "react";
+
+// const Abc = () => {
+//     const [count, setCount] = useState(0);
+//     return(
+//         <><p>You clicked {count} times</p>
+//         <button onClick={() => setCount(count + 1)}>click</button></>
+//     )
+// }
+// export default Abc
