@@ -60,7 +60,7 @@ app.post('/', function(req, res) {
 
 ///////////////////////////////////////////////////////////////****************///////////////////////////////////////////////////////////////////////////////
 app.post('/upload', (req, res) => {
-
+    file_path=null;
     if (!req.files) {
         return res.status(500).send({ msg: "file is not found" })
     }
