@@ -345,9 +345,9 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
     box-sizing: border-box;
 }
 
-div {
+/* div {
     display: block;
-}
+} */
 body {
     color: #3e4d5c;
     direction: ltr;
@@ -429,7 +429,7 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
   }
 .owl-carousel .owl-stage:after {
     content: ".";
-    display: block;
+    /* display: block; */
     clear: both;
     visibility: hidden;
     line-height: 0;
@@ -989,7 +989,7 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
 
 .product-item:after {
     content: ".";
-    display: block;
+    /* display: block; */
     height: 0;
     clear: both;
     visibility: hidden;

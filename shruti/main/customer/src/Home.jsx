@@ -66,10 +66,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model1.jpg" class="img-responsive" alt="Plastic Bottle" />
-                                                <div>
-                                                    <a href="/products/model1.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                                
                                             </div>
                                             <h3><a href="shop-item.html">Plastic Bottle</a></h3>
                                             <div class="pi-price">  $2.00 per bottle</div>
@@ -83,10 +80,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model2.jpg" class="img-responsive" alt="Newspaper" />
-                                                <div>
-                                                    <a href="/products/model2.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                                
                                             </div>
                                             <h3><a href="shop-item.html">Newspaper</a></h3>
                                             <div class="pi-price">  $12 per Kg</div><br />
@@ -99,10 +93,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model6.jpg" class="img-responsive" alt="Organic Waste" />
-                                                <div>
-                                                    <a href="/products/model6.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                          
                                             </div>
                                             <h3><a href="shop-item.html">Organic Waste</a></h3>
                                             <div class="pi-price">  $10 per Kg</div><br />
@@ -116,10 +107,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress" />
-                                                <div>
-                                                    <a href="/products/model4.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                                
                                             </div>
                                             <h3><a href="javascript:;">Glass Bottle</a></h3>
                                             <div class="pi-price">  $5.00 per bottle</div>
@@ -133,10 +121,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model5.jpg" class="img-responsive" alt="Berry Lace Dress" />
-                                                <div>
-                                                    <a href="/products/model5.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                               
                                             </div>
                                             <h3><a href="shop-item.html">Metal</a></h3>
                                             <div class="pi-price">  $100.00 per Kg</div><br />
@@ -149,10 +134,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model3.jpg" class="img-responsive" alt="Berry Lace Dress" />
-                                                <div>
-                                                    <a href="/products/model3.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                               
                                             </div>
                                             <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
                                             <div class="pi-price">  $29.00</div>
@@ -165,10 +147,7 @@ export const Home = () => {
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model7.jpg" class="img-responsive" alt="Berry Lace Dress" />
-                                                <div>
-                                                    <a href="/products/model7.jpg" class="btn btn-default fancybox-button">Zoom</a>
-                                                    <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
-                                                </div>
+                                               
                                             </div>
                                             <h3><a href="shop-item.html">Berry Lace Dress3</a></h3>
                                             <div class="pi-price">  $29.00</div>

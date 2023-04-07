@@ -38,9 +38,11 @@ export const Login = (props) => {
     if (selectedOption === "driver") {
       window.location.href = "http://127.0.0.1:5500/main/driver/driver.html";
       // navigate("/driver.html");
-      // <Link to='/driver.html'></Link>
+      // <Link to='/customer'></Link>
     } else {
-      window.location.href = ("http://127.0.0.1:5500/main/customer/customer.html");
+      window.open("http://192.168.0.204:3005/",'_blank')
+      // window.location.href = "http://192.168.0.204:3005/";
+      // window.location.href = ("http://127.0.0.1:5500/main/customer/customer.html");
     }
     console.log(email);
     console.log(pass);

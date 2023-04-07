@@ -29,7 +29,7 @@ export const Main = () => {
                 </div>
             </nav>
 
-            <img src={require('./waste2.png')} alt="waste" height={500} />
+            <img src={require('./waste2.png')} alt="waste" />
 
             <footer className="footer">
                 <p className="text-footer">
