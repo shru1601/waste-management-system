@@ -1,0 +1,89 @@
+.App {
+  text-align: center;
+}
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    top: 0;
+    cursor: pointer;
+  }
+  
+  .footer {
+  background-color: #000;
+  }
+  
+  .nav-list {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .logo img {
+    width: 180px;
+    border-radius: 50px;
+  }
+  
+  .nav-list li {
+    list-style: none;
+    padding: 26px 30px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15.5px;
+  }
+  
+  .nav-list li a:hover {
+    color: grey;
+  }
+  
+  .rightnav {
+    width: 30%;
+    text-align: right;
+  }
+  
+ 
+  .btn {
+  margin-left: 20px;
+  height: 33px;
+  width: 70px;
+    color: #fff;
+  background-color: #000;
+    cursor: pointer;
+  }
+  
+  .btn-sm {
+    padding: 6px 10px;
+    vertical-align: middle;
+  }
+
+  .center {
+    text-align: center;
+  }
+  
+  .text-footer {
+    text-align: center;
+    padding: 30px 0;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+  }
+  
+
+
+img{
+  width: 100%;
+}
+
+/*css of link and register page */
