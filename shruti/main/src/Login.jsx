@@ -16,9 +16,15 @@ const EyeSlash = <FontAwesomeIcon className="icon" icon={faEyeSlash} />;
 
 
 export const Login = (props) => {
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [pass, setPass] = useState('');
   const [selectedOption, setSelectedOption] = useState("");
+
+  const [formData, setFormData] = useState({});
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
   // getEmailData();
 
   ///////password visibilty/////////////////////////////////////////
@@ -34,18 +40,37 @@ export const Login = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
-    if (selectedOption === "driver") {
-      window.location.href = "http://127.0.0.1:5500/main/driver/driver.html";
-      // navigate("/driver.html");
-      // <Link to='/customer'></Link>
-    } else {
-      window.open("http://192.168.0.204:3005/",'_blank')
-      // window.location.href = "http://192.168.0.204:3005/";
-      // window.location.href = ("http://127.0.0.1:5500/main/customer/customer.html");
-    }
-    console.log(email);
-    console.log(pass);
+    console.log(formData);
+    //inserting the data into login table 
+    console.log(formData);
+    fetch('http://localhost:5000/api/data/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    // .then(res => {
+      //     console.log(res);
+      //     getFile({ name: res.data.name,
+      //              path: 'http://localhost:5000' + res.data.path
+      //            })
+      // })
+      .catch(error => console.error(error));
+      // console.log(email);
+      console.log(passWord);
+      
+          if (selectedOption === "driver") {
+            window.location.href = "http://127.0.0.1:5500/main/driver/driver.html";
+            // navigate("/driver.html");
+            // <Link to='/customer'></Link>
+          } else {
+            window.open("http://192.168.0.204:3005/", '_blank')
+            // window.location.href = "http://192.168.0.204:3005/";
+            // window.location.href = ("http://127.0.0.1:5500/main/customer/customer.html");
+          }
   }
 
   ////////////////////////////////////////////////////////////////****************///////////////////////////////////////////////////////////////////////////////
@@ -92,7 +117,9 @@ export const Login = (props) => {
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="div_label">
             <label htmlFor="email">Email ID</label>
-            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@abc.com" id="email" name="email" />
+            <input onChange={handleInputChange} type="email" placeholder="youremail@abc.com" id="email" name="email" />
+
+            {/* <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="youremail@abc.com" id="email" name="email" /> */}
           </div>
           {/* <script>
                     function validateEmail(email) {
@@ -119,7 +146,9 @@ export const Login = (props) => {
           <div className="div_label">
             <br /><label htmlFor="password">Password</label>
             {/* <input value={pass} onChange={(e) => setPass(e.target.value)} type="password" placeholder="********" id="password" name="password" /> */}
-            <input ref={passWord} type="password" placeholder="Enter Password" name="password" onChange={(e) => setPass(e.target.value)}></input>
+            <input ref={passWord} type="password" placeholder="Enter Password" name="password" onChange={handleInputChange}></input>
+
+            {/* <input ref={passWord} type="password" placeholder="Enter Password" name="password" onChange={(e) => setPass(e.target.value)}></input> */}
 
             {show ? <i onClick={showpassword}>{Eye}</i> : <i onClick={showpassword}>{EyeSlash}</i>}
 
@@ -127,7 +156,8 @@ export const Login = (props) => {
 
           <div className="div_label">
             <label htmlFor="category" >Choose a category:<br /></label>
-            <select id="category" className="category" name="category" onChange={(e) => setSelectedOption((e.target.value))} >
+            <select id="category" className="category" name="category" onChange= { (e) => {  setSelectedOption((e.target.value)); handleInputChange((e));}} >
+            {/* <select id="category" className="category" name="category" onChange={(e) => setSelectedOption((e.target.value))} > */}
               <option value="none" selected disabled hidden>Select an Option</option>
               <option value="customer"> Customer</option>
               <option value="driver"> Driver</option>

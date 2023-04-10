@@ -50,7 +50,7 @@ app.post('/', function(req, res) {
     var data = req.body;
     // var id = data.id;
 
-    var query = "SELECT category FROM Control WHERE id=" + id;
+    var query = "SELECT category FROM schema_wsm.register WHERE id=" + id;
     connection.query(query, function(error, result) {
         console.log(result);
         res.send(result);
@@ -118,6 +118,29 @@ app.post('/api/data', (req, res) => {
         .then(() => {
             console.log('Data Added');
             return res.json({ msg: 'Data Added' });
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+});
+
+
+//insert into login table
+app.post('/api/data/login', (req, res) => {
+    console.log('*****************************************');
+    console.log(req.body);
+    const { email, password, category } = req.body;
+    // console.log(path);
+    // const file_path = path;
+    db('schema_wsm.login')
+        .insert({
+            emailid: email,
+            password: password,
+            category: category
+        })
+        .then(() => {
+            console.log('Data Added in login table');
+            return res.json({ msg: 'Data Added in login table' });
         })
         .catch((err) => {
             console.log(err);
