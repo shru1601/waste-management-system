@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 // import {Link, Route} from "react-router-dom";
 import './slider.css';
+// import About from './About';
 import './cart';
 
 
@@ -31,7 +32,7 @@ export const Home = () => {
                         </div>
 
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="About">About</a></li>
                         <li><a href="#contact">Contact</a></li>
                         {/* </ul> */}
                         
@@ -88,12 +89,13 @@ export const Home = () => {
             <div class="row margin-bottom-40">
                 {/* <!-- BEGIN SALE PRODUCT --> */}
                 <div class="col-md-12 sale-product">
-                    <h2>All Products</h2>
+                    {/* <h2>All Products</h2> */}
                     <div class="owl-carousel owl-carousel5">
                         <div className='owl-stage-outer'>
                             <div class="owl-stage" >
                                 <div class="owl-item">
                                     <div>
+                                        
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model1.jpg" class="img-responsive" alt="Plastic Bottle" />
@@ -158,6 +160,7 @@ export const Home = () => {
                                             <div class="pi-price">  $100.00 per Kg</div><br />
                                             <button type='button' data-bs-name="Metal" data-bs-price="100" class="add2cart btn btn-default ">Add to cart</button>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +190,9 @@ export const Home = () => {
                             <div class="grand-total">Total price: ₹<span class="total-cart"></span></div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+
                             {/* <!-- <button type="button" class="btn btn-danger clear-all">Clear All</button> --> */}
                         </div>
                     </div>
@@ -197,21 +202,23 @@ export const Home = () => {
 
 
             {/*<!-- BEGIN POWERED --> */}
-            <div class="col-md-4 col-sm-4 text-right">
-                <p class="powered">Powered by: <a href="http://www.darkbears.com/">DarkBears.com</a></p>
-            </div>
+            
             {/* <!-- END POWERED --> */}
             {/* <!-- BEGIN FOOTER --> */}
             <div class="footer">
-                <div class="container">
+                {/* <div class="container"> */}
+            <div class="col-md-4 col-sm-4 text-right">
+                <p class="powered">Powered by: <a href="http://www.darkbears.com/">DarkBears.com</a></p>
+            </div>
                     <div class="row">
+                       
                         {/* <!-- BEGIN COPYRIGHT --> */}
                         <div class="col-md-4 col-sm-4 padding-top-10">
                             2015 © DarkBears. ALL Rights Reserved.
-                        </div>
-                        {/* <!-- END COPYRIGHT -->
-          <!-- BEGIN PAYMENTS --> */}
-                        <div class="col-md-4 col-sm-4">
+                        </div> 
+                        {/* <!-- END COPYRIGHT --> */}
+         {/*} <!-- BEGIN PAYMENTS --> */}
+                        {/* <div class="col-md-4 col-sm-4">
                             <ul class="list-unstyled list-inline pull-right">
                                 <li><img src="/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union" /></li>
                                 <li><img src="/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express" /></li>
@@ -219,11 +226,11 @@ export const Home = () => {
                                 <li><img src="/payments/PayPal.jpg" alt="We accept PayPal" title="We accept PayPal" /></li>
                                 <li><img src="/payments/visa.jpg" alt="We accept Visa" title="We accept Visa" /></li>
                             </ul>
-                        </div>
+                        </div> */}
                         {/* <!-- END PAYMENTS -->*/}
-                    </div>
-                </div>
-            </div>
+                     </div>
+                {/* </div> */}
+            </div>  
             {/* <!-- END FOOTER --> */}
         </div >
     )
