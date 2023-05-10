@@ -1,18 +1,52 @@
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 // import 'bootstrap/dist/js/bootstrap.bundle.min';
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 // import {Link, Route} from "react-router-dom";
 import './slider.css';
 // import About from './About';
 import './cart';
+// import { json } from 'react-router-dom';
 
 
 export const Home = () => {
     console.log('**********************************************************************');
+
+    const[cart, setCart] = useState({});
+    // const apiGet = () => {
+    //     fetch("http://localhost:5000/api/data/cart")
+    //     .then((response) => response.json())
+    //     .then((json) => {
+    //         console.log(json);
+    //         setData(json);
+    //     });
+    // };
+
+
+    // eslint-disable-next-line
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        console.log(cart);
+        //inserting the data into cart  
+        console.log(cart);
+        setCart(cart);
+        fetch('http://localhost:5000/api/data/cart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(cart)
+        })
+        .then(response => response.json())
+        .then(cart => console.log(cart))
+    }
+    
+
+
     return (
 
         <div>
@@ -139,7 +173,7 @@ export const Home = () => {
                                     <div>
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
-                                                <img src="/products/model4.jpg" class="img-responsive" alt="Berry Lace Dress" />
+                                                <img src="/products/model4.jpg" class="img-responsive" alt='product' />
 
                                             </div>
                                             <h3>Glass Bottle</h3>
@@ -153,7 +187,7 @@ export const Home = () => {
                                     <div>
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
-                                                <img src="/products/model5.jpg" class="img-responsive" alt="Berry Lace Dress" />
+                                                <img src="/products/model5.jpg" class="img-responsive" alt='product'/>
 
                                             </div>
                                             <h3>Metal</h3>
@@ -191,7 +225,7 @@ export const Home = () => {
                         </div>
                         <div class="modal-footer">
                             {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={handleSubmit}>Submit</button>
 
                             {/* <!-- <button type="button" class="btn btn-danger clear-all">Clear All</button> --> */}
                         </div>

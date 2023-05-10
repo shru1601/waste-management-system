@@ -50,11 +50,13 @@ height: 97px;
   }
   #staticBackdropLabel {
     font-weight: bold;
+    color: black;
   }
   .grand-total {
     margin-top: 1rem;
     text-align: center;
     font-weight: 600;
+    color: black;
   }
   .table {
     margin-bottom: 0 !important;
@@ -114,6 +116,7 @@ height: 97px;
     background: url(slide1bg.jpg);
     background-size: cover;
     background-position: center center;
+    /* height: 100%; */
 }
 
 .margin-bottom-20 {
@@ -345,6 +348,7 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
     -webkit-border-radius: 0 !important;
     -moz-border-radius: 0 !important;
     border-radius: 0 !important;
+    color:black;
 }
 ::-webkit-scrollbar {
     width: 12px;
@@ -446,6 +450,7 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
 }
 .owl-carousel .owl-stage {
     position: relative;
+    display: flex;
 }
 .owl-carousel {
     width: 100%;
@@ -549,7 +554,7 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
 }
 
 .carousel-slider .carousel-title-v3 {
-       font-size: 50px;
+    font-size: 50px;
     font-weight: 600;
     line-height: 1.4;
     color: #fff;
@@ -842,12 +847,12 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
 }
 
 .footer .powered>a {
-    color: #06c100;
+    color:blue;
     text-decoration: none;
 }
 
 .footer .powered>a:hover {
-    color: #046200;
+    color:blue;
 }
 
 /* footer */

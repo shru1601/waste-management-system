@@ -7,10 +7,11 @@ var shoppingCart = (function () {
 
     var cart = [];
 
-    function Item(name, price, count) {
+    function Item(name, price, count,total) {
         this.name = name;
         this.price = price;
         this.count = count;
+        this.total = total;
     }
 
     // Save cart
