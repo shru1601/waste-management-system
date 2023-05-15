@@ -2,17 +2,19 @@ import $ from 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
-
 var shoppingCart = (function () {
+    
 
     var cart = [];
+    console.log(cart,"caart data");
 
     function Item(name, price, count,total) {
         this.name = name;
         this.price = price;
-        this.count = count;
-        this.total = total;
+        this.count = count; 
+        this.total = total
     }
+  
 
     // Save cart
     function saveCart() {
@@ -31,7 +33,7 @@ var shoppingCart = (function () {
     var obj = {};
 
     // Add to cart
-    obj.addItemToCart = function (name, price, count) {
+    obj.addItemToCart = function (name, price, count,total=10) {
         for (var item in cart) {
             if (cart[item].name === name) {
                 cart[item].count++;
@@ -39,7 +41,7 @@ var shoppingCart = (function () {
                 return;
             }
         }
-        item = new Item(name, price, count);
+        item = new Item(name, price, count,total);
         cart.push(item);
         saveCart();
     }
@@ -52,6 +54,7 @@ var shoppingCart = (function () {
             }
         }
     };
+
     // Remove item from cart
     obj.removeItemFromCart = function (name) {
         for (var item in cart) {
@@ -120,7 +123,6 @@ var shoppingCart = (function () {
     return obj;
 })();
 
-
 // Add item
 $(document).on("click",'.add2cart',function (event) {
     // alert('working');
@@ -130,8 +132,25 @@ $(document).on("click",'.add2cart',function (event) {
     var price = Number($(this).data('bs-price'));
     shoppingCart.addItemToCart(name, price, 1);
     displayCart();
-    localStorage.setItem('items',shoppingCart.cart)
+    localStorage.setItem('items',shoppingCart.cart) //setState
 });
+
+
+
+fetch('/api/data/cart', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(["Hello",1,2,3])
+})
+.then(response => response.json())
+        .then(data => console.log(data))
+
+        .catch(error => console.error(error));
+
+
+
 
 // Clear items
 $(document).on("click",'.clear-cart',function () {
@@ -214,3 +233,4 @@ $('#search_field').on('keyup', function () {
     });
 
 });
+export default shoppingCart;

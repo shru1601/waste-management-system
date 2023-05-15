@@ -1,14 +1,25 @@
-const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
 const cors = require('cors');
 const knex = require('knex');
 const fileUpload = require('express-fileupload');
+//import { LocalStorage } from 'node-localstorage';
+const localStorage = require("localstorage")
 require('dotenv').config();
 
 const app = express();
 
+
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false}));
+
+console.log({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE,
+})
 
 const db = knex({
     client: 'pg',
@@ -51,6 +62,7 @@ app.post('/', function(req, res) {
     // var id = data.id;
 
     var query = "SELECT category FROM schema_wsm.register WHERE id=" + id;
+    
     connection.query(query, function(error, result) {
         console.log(result);
         res.send(result);
@@ -83,22 +95,6 @@ app.post('/upload', (req, res) => {
 app.post('/api/data', (req, res) => {
     console.log('*****************************************');
     console.log(req.body);
-    // if (!req.files) {
-    //     return res.status(500).send({ msg: "file is not found" })
-    // }
-    //     // accessing the file
-    // const myFile = req.files.file;
-
-    // //  mv() method places the file inside public directory
-    // myFile.mv(`${__dirname}/file-upload/${myFile.name}`, function (err) {
-    //     if (err) {
-    //         console.log(err)
-    //         return res.status(500).send({ msg: "Error occured" });
-    //     }
-    //     // returing the response with file path and name
-    //     return res.send({name: myFile.name, path: `/${myFile.name}`});
-    // });
-////////////////////////////////////////////*******************************************//////////////////////////////////////////////////
     
     const { name, address, mobile, email, gender, category, password, idproof } = req.body;
     // console.log(path);
@@ -116,8 +112,8 @@ app.post('/api/data', (req, res) => {
             filePath:file_path
         })
         .then(() => {
-            console.log('Data Added');
-            return res.json({ msg: 'Data Added' });
+            console.log('Data Added in registration table');
+            return res.json({ msg: 'Data Added in registration table' });
         })
         .catch((err) => {
             console.log(err);
@@ -127,6 +123,7 @@ app.post('/api/data', (req, res) => {
 
 //insert into login table
 app.post('/api/data/login', (req, res) => {
+    
     console.log('*****************************************');
     console.log(req.body);
     const { email, password, category } = req.body;
@@ -145,6 +142,61 @@ app.post('/api/data/login', (req, res) => {
         .catch((err) => {
             console.log(err);
         });
+});
+
+
+
+// const port = process.env.PORT || 5000;
+// const port = 3000;
+
+// app.listen(port, () => console.log(`Server running on port ${port}, http://localhost:${port}`));
+
+
+// ===================================================
+
+
+
+
+
+// ======================================================
+
+
+
+
+app.post('/api/data/cart', (req, res) => {
+    console.log(req.body,"Res");
+    console.log('*****************************************');
+
+    const { data } = req.body;
+    // var  arr_data = data.split()[0]
+   const arr_data = JSON.parse(data);
+   console.log(arr_data)
+    // const newData = arr_data.map((ele)=>{
+    //     return ele;
+    // })
+    // const d = newData[0];
+    // console.log(d.name)
+
+
+    // console.log(path);
+
+    // const file_path = path;
+  
+    arr_data.forEach(d => {
+        db('schema_wsm.cart')
+          .insert({
+            name: d.name,
+            price: d.price,
+            count: d.count,
+            total: d.total
+          })
+          .then(() => {
+            console.log('Data inserted successfully');
+          })
+          .catch(error => {
+            console.error('Error inserting data:', error);
+          });
+      });
 });
 
 

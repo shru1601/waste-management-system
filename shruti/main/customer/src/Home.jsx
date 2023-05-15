@@ -7,15 +7,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 // import {Link, Route} from "react-router-dom";
 import './slider.css';
+import shoppingCart from './cart';
+
+
+
 // import About from './About';
-import './cart';
+
 // import { json } from 'react-router-dom';
 
+// import Item from './cart';
 
-export const Home = () => {
+// console.log(Item,"cart function is here")
+
+
+export const Home = (props) => {
     console.log('**********************************************************************');
+ 
+    // const [state, setState] = useState("");
 
-    const[cart, setCart] = useState({});
+
+    
+    var scribble = localStorage.getItem('shoppingCart');
+    // console.log(scribble,"Hello data balanjs s");
+    var obj = {}
+    var data = Array(scribble);
+    console.log(data,"data is here")
+    
+    const[cart, setCart] = useState(scribble);
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setCart({ ...cart, [name]: value });
+      };
+      const item = {...localStorage}
+      console.log(item,"item data");
+      console.log("=================",cart,"===============")
+ 
+    
     // const apiGet = () => {
     //     fetch("http://localhost:5000/api/data/cart")
     //     .then((response) => response.json())
@@ -26,23 +53,30 @@ export const Home = () => {
     // };
 
 
-    // eslint-disable-next-line
+    // eslint-disable-next-linert
+
+    // console.log(cart,'---------------')
+
     const handleSubmit = (e) => {
         e.preventDefault();
     
-        console.log(cart);
+        // console.log(cart);
         //inserting the data into cart  
         console.log(cart);
-        setCart(cart);
+        // setCart(cart);
         fetch('http://localhost:5000/api/data/cart', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
           },
-          body: JSON.stringify(cart)
+          body: JSON.stringify({data:cart})
         })
         .then(response => response.json())
-        .then(cart => console.log(cart))
+        .then(data => console.log(data))
+
+        .catch(error => console.error(error));
+
     }
     
 
@@ -51,8 +85,6 @@ export const Home = () => {
 
         <div>
             {/* <nav class="navbar background">
-
-
 
             </nav> */}
 
@@ -225,7 +257,7 @@ export const Home = () => {
                         </div>
                         <div class="modal-footer">
                             {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={handleSubmit}>Submit</button>
+                            <button onChange={handleInputChange} type="button" class="btn btn-secondary" data-bs-dismiss="modal" onClick={handleSubmit}>Submit</button>
 
                             {/* <!-- <button type="button" class="btn btn-danger clear-all">Clear All</button> --> */}
                         </div>
