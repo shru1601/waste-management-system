@@ -1,72 +1,121 @@
-import { CTable } from "@coreui/react";
+// import { CTable } from "@coreui/react"; 
 import React from "react";
-import AppSidebar from "../appsidebar";
-import Layout from "../layout/layout";
-import BreadCrumb from "../pages/breadcrumb";
-import Pagination from "../pages/pagination";
+import { useEffect ,useState} from "react";
+
+import "jquery/dist/jquery.min.js";
+import "datatables.net-dt/js/dataTables.dataTables";
+import "datatables.net-dt/css/jquery.dataTables.min.css";
+import "datatables.net-buttons/js/dataTables.buttons.js";
+
+
+import $ from "jquery";
 
 const CustomerList = () => {
-  const customerTableColumns = [
-    {
-      key: "id",
-      label: "#",
-      _props: { scope: "col" },
-    },
-    {
-      key: "name",
-      _props: { scope: "col" },
-    },
-    {
-      key: "address",
-      label: "address",
-      _props: { scope: "col" },
-    },
-    {
-      key: "contact",
-      label: "contact",
-      _props: { scope: "col" },
-    },
-  ];
-  const items = [
-    {
-      id: 1,
-      name: "Mark",
-      address: "Otto",
-      contact: 123,
-      _cellProps: { id: { scope: "row" } },
-    },
-    {
-      id: 2,
-      name: "Jacob",
-      address: "Thornton",
-      contact: 345,
-      _cellProps: { id: { scope: "row" } },
-    },
-    {
-      id: 3,
-      name: "Jacob",
-      address: "Thornton",
-      contact: 444,
-      _cellProps: { id: { scope: "row" } },
-    },
-    {
-      id: 4,
-      name: "Jacob",
-      address: "Thornton",
-      contact: 777,
-      _cellProps: { id: { scope: "row" } },
-    },
-    {
-      id: 5,
-      name: "Jacob",
-      address: "Thornton",
-      contact: 787,
-      _cellProps: { id: { scope: "row" } },
-    },
-  ];
 
+  
+               $(document).ready(function () {
+                 setTimeout(function () {
+                   $("#table").DataTable({
+                     pagingType: "full_numbers",
+                     pageLength: 20,
+                     processing: true,
+                     "bDestroy": true,
+                     dom: "Bfrtip",
+                     select: {
+                       style: "single",
+                     },
          
-        return <> <BreadCrumb /><Pagination /><CTable bordered  hover  columns={customerTableColumns} items={items} /></>;
+               
+                     fnRowCallback: function (
+                       nRow,
+                       aData,
+                       iDisplayIndex,
+                       iDisplayIndexFull
+                     ) {
+                       var index = iDisplayIndexFull + 1;
+                       $("td:first", nRow).html(index);
+                       return nRow;
+                     },
+         
+                     lengthMenu: [
+                       [10, 20, 30, 50, -1],
+                       [10, 20, 30, 50, "All"],
+                     ],
+                     columnDefs: [
+                       {
+                         targets: 0,
+                         render: function (data, type, row, meta) {
+                           return type === "export" ? meta.row + 1 : data;
+                         },
+                       },
+                     ],
+                   });
+                 }, 1000);
+               });
+             
+   
+
+
+  const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    fetch('http://localhost:5000/')
+      .then(response => response.json())
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data', error));
+  }, []);
+console.log(data)
+let newData = data.map((e,i)=>{
+return e;
+})
+// console.log(JSON.parse(newData))
+console.log(newData)
+  return (
+    <>
+  <div class="container-fluid py-4">
+         <div class="table-responsive p-0 pb-2">
+       <table id="table" className="table align-items-center justify-content-center mb-0">
+           <thead>
+               <tr>
+                <th></th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">Name</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">mobileno</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">email</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">address</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">gender</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">password</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">category</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">idproof</th>
+               <th className="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2">filePath</th>
+</tr>
+           </thead>
+          
+  <tbody>
+        {newData.map((item, index) => (
+          <tr key={index}>
+            <td></td>
+            <td>{item.name}</td>
+            <td>{item.mobileno}</td>
+            <td>{item.emailid}</td>
+            <td>{item.address}</td>
+            <td>{item.gender}</td>
+            <td>{item.category}</td>
+            <td>{item.password}</td>
+            <td>{item.idproof}</td>
+            <td>{item.filePath}</td>
+
+          </tr>
+        ))}
+      </tbody>
+
+          
+       </table>
+           </div>
+           </div>
+</>
+  )
+ 
 };
 
 export default CustomerList;
