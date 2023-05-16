@@ -2,7 +2,7 @@ import React from "react"
 import CIcon from '@coreui/icons-react';
 // import * as icon from '@coreui/icons';
 import { CNavGroup, CNavItem, CSidebar, CSidebarBrand, CSidebarNav, CSidebarToggler } from "@coreui/react"
-import { cilAccountLogout, cilBike, cilSpeedometer, cilUser } from "@coreui/icons";
+import { cilAccountLogout, cilBike, cilCart, cilSpeedometer, cilUser } from "@coreui/icons";
 import { Link } from "react-router-dom";
 
 const AppSidebar = () => {
@@ -13,23 +13,23 @@ const AppSidebar = () => {
       <CIcon customClassName="nav-icon" icon={cilSpeedometer} />
       Dashboard
     </CNavItem>
-    <CNavGroup toggler="Users">
+    {/* <CNavGroup toggler="Extras"> */}
       <CNavItem href="#">
-        <Link to="/users/customer" ><CIcon customClassName="nav-icon" icon={cilUser} /> Customer</Link>
+        <Link to="/users/customer" ><CIcon customClassName="nav-icon" icon={cilUser} /> Registration </Link>
       </CNavItem>
       <CNavItem href="#">
-        <Link to="/users/deliveryagent"><CIcon customClassName="nav-icon" icon={cilBike} /> DeliveryAgent </Link>
+        <Link to="/users/order"><CIcon customClassName="nav-icon" icon={cilCart} /> Orders </Link>
       </CNavItem>
-    </CNavGroup>
-    <CNavGroup toggler="Extras">
+    {/* </CNavGroup> */}
+    {/* <CNavGroup toggler="Extras">
       <CNavItem href="#">
         <Link to="/login"> <CIcon customClassName="nav-icon" icon={cilAccountLogout} /> Login </Link>
       </CNavItem>
       <CNavItem href="#">
-        <Link to="/registration"> <CIcon customClassName="nav-icon" icon={cilAccountLogout} /> Registration </Link>
-      </CNavItem>
+        <Link to="/registration"> <CIcon customClassName="nav-icon" icon={cilAccountLogout} /> Registration </Link> */}
+      {/* </CNavItem> */}
       
-    </CNavGroup>
+    {/* </CNavGroup> */}
   </CSidebarNav>
   <CSidebarToggler />
 </CSidebar>

@@ -4,10 +4,13 @@ const cors = require('cors');
 const knex = require('knex');
 const fileUpload = require('express-fileupload');
 //import { LocalStorage } from 'node-localstorage';
-const localStorage = require("localstorage")
+// const localStorage = require("localstorage");
+const { data } = require('jquery');
 require('dotenv').config();
 
 const app = express();
+
+
 
 
 
@@ -45,14 +48,16 @@ app.get('/', (req, res) => {
     db.select('*')
         .from('schema_wsm.register')
         .then((data) => {
-            // console.log(data);
+            console.log(data,"fetched all data");
             res.json(data);
             console.log(req.body);
         })
         .catch((err) => {
             console.log(err);
         });
+      
     });
+
     
 
 ////////////////////////////////////////////////////////////////****************///////////////////////////////////////////////////////////////////////////////
