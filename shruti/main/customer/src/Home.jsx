@@ -7,42 +7,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 // import {Link, Route} from "react-router-dom";
 import './slider.css';
-import shoppingCart from './cart';
-
-
-
-// import About from './About';
-
-// import { json } from 'react-router-dom';
-
-// import Item from './cart';
-
-// console.log(Item,"cart function is here")
-
+// import shoppingCart from './cart';
 
 export const Home = (props) => {
-    console.log('**********************************************************************');
- 
-    // const [state, setState] = useState("");
 
-
-    
     var scribble = localStorage.getItem('shoppingCart');
     // console.log(scribble,"Hello data balanjs s");
-    var obj = {}
     var data = Array(scribble);
-    console.log(data,"data is here")
-    
-    const[cart, setCart] = useState(scribble);
+    console.log(data, "data is here")
+
+    const [cart, setCart] = useState(scribble);
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setCart({ ...cart, [name]: value });
-      };
-      const item = {...localStorage}
-      console.log(item,"item data");
-      console.log("=================",cart,"===============")
- 
-    
+    };
+    const item = { ...localStorage }
+    console.log(item, "item data");
+    console.log("=================", cart, "===============")
+
+
     // const apiGet = () => {
     //     fetch("http://localhost:5000/api/data/cart")
     //     .then((response) => response.json())
@@ -52,45 +35,35 @@ export const Home = (props) => {
     //     });
     // };
 
-
-    // eslint-disable-next-linert
-
-    // console.log(cart,'---------------')
-
     const handleSubmit = (e) => {
         e.preventDefault();
-    
+
         // console.log(cart);
         //inserting the data into cart  
         console.log(cart);
         // setCart(cart);
         fetch('http://localhost:5000/api/data/cart', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({data:cart})
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ data: cart })
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
+            .then(response => response.json())
+            .then(data => console.log(data))
 
-        .catch(error => console.error(error));
+            .catch(error => console.error(error));
 
     }
-    
+
 
 
     return (
 
         <div>
-            {/* <nav class="navbar background">
-
-            </nav> */}
-
             <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    {/* <ul class="navbar-nav mr-auto"> */}
                     <ul class="nav-list">
 
                         <div class="logo">
@@ -100,16 +73,14 @@ export const Home = (props) => {
                         <li><a href="#home">Home</a></li>
                         <li><a href="About">About</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        {/* </ul> */}
-                        
                         <li>
                             <form class="form-inline my-2 my-lg-0">
                                 <input class="form-control mr-sm-2" type="search" id="search_field" placeholder="Search" aria-label="Search" />
                             </form>
                         </li>
                         <li>
-                            <button type="button" class="btn btn-success my-2 my-sm-0" data-bs-toggle="modal"  data-bs-target="#staticBackdrop">
-                                <FontAwesomeIcon icon={faShoppingCart} /> 
+                            <button type="button" class="btn btn-success my-2 my-sm-0" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <FontAwesomeIcon icon={faShoppingCart} />
                                 <i class="total-count" ></i>
                             </button>
                         </li>
@@ -161,7 +132,7 @@ export const Home = (props) => {
                             <div class="owl-stage" >
                                 <div class="owl-item">
                                     <div>
-                                        
+
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
                                                 <img src="/products/model1.jpg" class="img-responsive" alt="Plastic Bottle" />
@@ -219,14 +190,14 @@ export const Home = (props) => {
                                     <div>
                                         <div class="product-item">
                                             <div class="pi-img-wrapper">
-                                                <img src="/products/model5.jpg" class="img-responsive" alt='product'/>
+                                                <img src="/products/model5.jpg" class="img-responsive" alt='product' />
 
                                             </div>
                                             <h3>Metal</h3>
                                             <div class="pi-price">  $100.00 per Kg</div><br />
                                             <button type='button' data-bs-name="Metal" data-bs-price="100" class="add2cart btn btn-default ">Add to cart</button>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -239,8 +210,8 @@ export const Home = (props) => {
 
             {/* <!-- Starting of cart modal --> */}
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            {/* <div class="modal fade" id="staticBackdrop" role='dialog'> */}
-               
+                {/* <div class="modal fade" id="staticBackdrop" role='dialog'> */}
+
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -268,23 +239,23 @@ export const Home = (props) => {
 
 
             {/*<!-- BEGIN POWERED --> */}
-            
+
             {/* <!-- END POWERED --> */}
             {/* <!-- BEGIN FOOTER --> */}
             <div class="footer">
                 {/* <div class="container"> */}
-            <div class="col-md-4 col-sm-4 text-right">
-                <p class="powered">Powered by: <a href="http://www.darkbears.com/">DarkBears.com</a></p>
-            </div>
-                    <div class="row">
-                       
-                        {/* <!-- BEGIN COPYRIGHT --> */}
-                        <div class="col-md-4 col-sm-4 padding-top-10">
-                            2015 © DarkBears. ALL Rights Reserved.
-                        </div> 
-                        {/* <!-- END COPYRIGHT --> */}
-         {/*} <!-- BEGIN PAYMENTS --> */}
-                        {/* <div class="col-md-4 col-sm-4">
+                <div class="col-md-4 col-sm-4 text-right">
+                    <p class="powered">Powered by: <a href="http://www.darkbears.com/">DarkBears.com</a></p>
+                </div>
+                <div class="row">
+
+                    {/* <!-- BEGIN COPYRIGHT --> */}
+                    <div class="col-md-4 col-sm-4 padding-top-10">
+                        2015 © DarkBears. ALL Rights Reserved.
+                    </div>
+                    {/* <!-- END COPYRIGHT --> */}
+                    {/*} <!-- BEGIN PAYMENTS --> */}
+                    {/* <div class="col-md-4 col-sm-4">
                             <ul class="list-unstyled list-inline pull-right">
                                 <li><img src="/payments/western-union.jpg" alt="We accept Western Union" title="We accept Western Union" /></li>
                                 <li><img src="/payments/american-express.jpg" alt="We accept American Express" title="We accept American Express" /></li>
@@ -293,10 +264,10 @@ export const Home = (props) => {
                                 <li><img src="/payments/visa.jpg" alt="We accept Visa" title="We accept Visa" /></li>
                             </ul>
                         </div> */}
-                        {/* <!-- END PAYMENTS -->*/}
-                     </div>
+                    {/* <!-- END PAYMENTS -->*/}
+                </div>
                 {/* </div> */}
-            </div>  
+            </div>
             {/* <!-- END FOOTER --> */}
         </div >
     )

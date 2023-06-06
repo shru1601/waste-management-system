@@ -847,12 +847,14 @@ div, input, select, textarea, span, img, table, label, td, th, p, a, button, ul,
 }
 
 .footer .powered>a {
-    color:blue;
+    color:#7CFC00;
     text-decoration: none;
 }
+/* 60B45A */
 
 .footer .powered>a:hover {
-    color:blue;
+    color:#1ded32;
+    transform: scaleX(1);
 }
 
 /* footer */
